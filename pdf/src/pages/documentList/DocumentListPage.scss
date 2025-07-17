@@ -1,0 +1,19 @@
+.pdfDocList-container-main {
+  row-gap: 16px !important;
+  margin-bottom: 24px !important;
+  margin-top: 24px !important;
+
+  @media screen and (max-width: 767px) {
+    padding-bottom: 54px !important;
+  }
+}
+
+
+.omnichannel-card__text {
+margin-bottom: 40px !important;
+}
+
+.close-button{
+  margin-top: 22px;
+}
+

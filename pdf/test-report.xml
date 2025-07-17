@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testExecutions version="1">
+  <file path="C:\Users\EE04997\Desktop\projects\pdf-preview-fe-global\src\features\documentList\components\structure\DocumentCard.test.tsx">
+    <testCase name="DocumentCard renders document information correctly" duration="297"/>
+    <testCase name="DocumentCard displays correct status" duration="67"/>
+    <testCase name="DocumentCard calls navigate function when clicked" duration="58"/>
+    <testCase name="DocumentCard handles missing fileName gracefully" duration="43"/>
+  </file>
+  <file path="C:\Users\EE04997\Desktop\projects\pdf-preview-fe-global\src\features\pdfpreview\components\PdfDownloadButton.test.tsx">
+    <testCase name="PdfDownloadButton renders the download button correctly" duration="332"/>
+    <testCase name="PdfDownloadButton calls downloadPdf function when button is clicked" duration="115"/>
+  </file>
+  <file path="C:\Users\EE04997\Desktop\projects\pdf-preview-fe-global\src\features\documentList\components\structure\DocumentLink.test.tsx">
+    <testCase name="DocumentLink renders document information correctly" duration="524"/>
+    <testCase name="DocumentLink displays name when tileName is null" duration="197"/>
+    <testCase name="DocumentLink calls navigate function when clicked" duration="125"/>
+  </file>
+  <file path="C:\Users\EE04997\Desktop\projects\pdf-preview-fe-global\src\features\documentList\DocumentListView.test.tsx">
+    <testCase name="DocumentListView renders Spinner when documentList is undefined or empty" duration="28"/>
+    <testCase name="DocumentListView renders DocumentLink when simplified view is true" duration="223"/>
+    <testCase name="DocumentListView renders DocumentCard when simplified view is false" duration="68"/>
+  </file>
+  <file path="C:\Users\EE04997\Desktop\projects\pdf-preview-fe-global\src\pages\documentList\DocumentListPage.test.tsx">
+    <testCase name="DocumentListPage renders the component correctly" duration="358"/>
+  </file>
+  <file path="C:\Users\EE04997\Desktop\projects\pdf-preview-fe-global\src\pages\pdfPreview\PdfPreviewPage.test.tsx">
+    <testCase name="Preview Page renders the spinner correctly" duration="52"/>
+    <testCase name="Preview Page renders the component correctly" duration="1384"/>
+  </file>
+  <file path="C:\Users\EE04997\Desktop\projects\pdf-preview-fe-global\src\pages\error\ErrorPage.test.tsx">
+    <testCase name="Error Page renders the component" duration="45"/>
+    <testCase name="Error Page checks the getErrorMessage different cases: error empty" duration="4"/>
+  </file>
+  <file path="C:\Users\EE04997\Desktop\projects\pdf-preview-fe-global\src\features\documentList\components\structure\TitleAndSubTitle.test.tsx">
+    <testCase name="TitleAndSubTitle renders title when hideTitle is false" duration="88"/>
+    <testCase name="TitleAndSubTitle does not render title when hideTitle is true" duration="26"/>
+    <testCase name="TitleAndSubTitle always renders subtitle" duration="19"/>
+    <testCase name="TitleAndSubTitle applies correct classes and styles" duration="125"/>
+    <testCase name="TitleAndSubTitle renders title when hideTitle is undefined " duration="23"/>
+  </file>
+  <file path="C:\Users\EE04997\Desktop\projects\pdf-preview-fe-global\src\hooks\useInitParams.test.ts">
+    <testCase name="useInitParams genearl test to check for exceptions" duration="23"/>
+  </file>
+  <file path="C:\Users\EE04997\Desktop\projects\pdf-preview-fe-global\src\hooks\useCallbackEvent.test.ts">
+    <testCase name="useCallBackEvent test triggercllback" duration="42"/>
+    <testCase name="useCallBackEvent test triggercllback not in workflow" duration="46"/>
+  </file>
+  <file path="C:\Users\EE04997\Desktop\projects\pdf-preview-fe-global\src\features\documentList\slices\DocumentSlice.test.ts">
+    <testCase name="documentsSlice should return the initial state when an empty action is passed" duration="13"/>
+    <testCase name="documentsSlice should set documents using setDocumentList action" duration="1"/>
+    <testCase name="documentsSlice should select documents from the state" duration="1"/>
+    <testCase name="documentsSlice should select isSimplifiedView from the state" duration="1"/>
+    <testCase name="documentsSlice should select isRpaFlow from the state" duration="1"/>
+  </file>
+  <file path="C:\Users\EE04997\Desktop\projects\pdf-preview-fe-global\src\hooks\useFetchDocPreview.test.ts">
+    <testCase name="useFetchDocPreview test document data null" duration="32"/>
+    <testCase name="useFetchDocPreview test document data not null" duration="4"/>
+  </file>
+  <file path="C:\Users\EE04997\Desktop\projects\pdf-preview-fe-global\src\components\navbarHeader\NavBarHeader.test.tsx">
+    <testCase name="NavBarHeader renders the component correctly" duration="64"/>
+    <testCase name="NavBarHeader calls closeFunc when close button is clicked" duration="18"/>
+    <testCase name="NavBarHeader calls backButtonFunc when back button is clicked" duration="8"/>
+  </file>
+  <file path="C:\Users\EE04997\Desktop\projects\pdf-preview-fe-global\src\features\documentList\mapper\documentListInit.mapper.test.ts">
+    <testCase name="extractDocumentData should correctly extract and transform data from the document detail response" duration="4"/>
+  </file>
+</testExecutions>

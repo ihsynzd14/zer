@@ -1,0 +1,11 @@
+log:
+  level: DEBUG
+eventHandlers:
+  -  mail:
+      to: ussmileucsdev.unicreditservices@unicredit.eu
+      subject: '[Jenkins] ${ctx.currentBuild.fullDisplayName}'
+      handles:
+        -  decorated:
+            event:
+              source: pipeline
+              reason: ERROR

@@ -1,0 +1,14 @@
+// @media only screen and (min-width: 767px) {
+//     .back-left-icon {
+//       display: none !important;
+//     }
+//   }
+
+.navigation-bar-row {
+  grid-auto-flow: column;
+  margin-bottom: 10px;
+}
+  .navbar-icon{
+    color: rgba(0, 0, 0, 0.85) !important;
+    cursor: pointer !important;
+  }

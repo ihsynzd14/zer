@@ -1,0 +1,80 @@
+# Default values for emb-core.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+app:
+  name: pdf-preview-fe-global
+  namespace: nsp-dxs-fe-ro-001
+  project_id: prj-dxs-qat-ro-001
+  environment: qa
+  version: v1.0.3
+  tier: fe
+  application_code: dxs
+  cee_countries_config: true
+
+image:
+  repository: artifactory.devops.internal.unicreditgroup.eu/dxs-docker-internal/dxs/pdf-preview-fe-global
+  tag: 1.0.43
+  # restart pod after every deploy
+  forceRestart: true
+  pullPolicy: Always
+
+autoscaling:
+  minReplicas: 1
+
+imagePullSecrets:
+  - name: sct-artifactory-registry-creds
+
+ingress:
+  enabled: true
+  className: "dxs-ro-001"
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    #nginx.ingress.kubernetes.io/use-regex: "true"
+    #nginx.ingress.kubernetes.io/rewrite-target: /$1
+  hosts:
+    - host: pdf-preview-global.fe-ro-001.dxs.qat.gcp.unicredit.eu
+      paths: [ "/" ]
+
+  tls:
+    - secretName: sct-tls-ingress
+
+resources:
+  limits:
+    cpu: 100m
+    memory: 100Mi
+  requests:
+    cpu: 50m
+    memory: 50Mi
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+livenessProbe:
+  initialDelaySeconds: 30
+  httpGet:
+    path: /health
+    port: http
+
+readinessProbe:
+  initialDelaySeconds: 30
+  httpGet:
+    path: /health
+    port: http
+
+monitor:
+  enabled: true
+
+service:
+  port: 8080
+  type: "ClusterIP"
+  nodePort: ""
+  pathType: Prefix
+
+config:
+  requiresAuthentication: false

@@ -1,0 +1,34 @@
+deployList:
+  repeatableSets:
+    - deploySet:
+        conciergeCheck:
+          environment: prod
+          configurations:
+            - "it-prd-fe"
+          artifact:
+            name: dxs/pdf-preview-fe-global
+            version: 1.0.43
+          tenant: C0
+        install:
+          tool:
+            helm:
+              path: helm/pdf-preview-fe-global
+              values: helm/pdf-preview-fe-global/values-prod-it.yaml
+              releaseName: pdf-preview-fe-global-prod
+        label: PROD
+    - deploySet:
+        conciergeCheck:
+          environment: prod
+          configurations:
+            - "it-prd-dr-fe"
+          artifact:
+            name: dxs/pdf-preview-fe-global
+            version: 1.0.43
+          tenant: C0
+        install:
+          tool:
+            helm:
+              path: helm/pdf-preview-fe-global
+              values: helm/pdf-preview-fe-global/values-prod-it.yaml
+              releaseName: pdf-preview-fe-global-prod
+        label: PROD-DR

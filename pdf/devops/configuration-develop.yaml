@@ -1,0 +1,17 @@
+build:
+  tool:
+    npm:
+      args: -Dsonar.sources=src
+      command: run full-prod
+sonar:
+    tool:
+      npm:
+        args: -Dsonar.projectKey=DXS_pdf-preview-fe-global
+        command: run sonar-scanner 
+buildContainer:
+    tool:
+      docker:
+        file: Dockerfile
+        imageTag: 1.0.43
+publishArtifact:
+    release: true 

@@ -1,0 +1,37 @@
+export const PDF_PREVIEW_SESSION_KEYS = {
+  DXS_DOSSIER_ID: 'dxsDossierId',
+  GROUP_KEY: 'groupKey',
+  CALLER_CODE: 'callerCode',
+  CHANNEL: 'channel',
+  NDG: 'ndg',
+  BANK_CODE: 'bankCode',
+  CORRELATION_KEY: 'correlationKey',
+  DOCUMENT_KEY: 'documentKey',
+  SHOW_X_BUTTON: 'showXButton',
+  SHOW_PRINT_BUTTON: 'showPrintButton',
+  SHOW_DOWNLOAD_BUTTON: 'showDownloadButton',
+  SHOW_BACK_BUTTON: 'showBackButton',
+  SHOW_VALIDATION_BUTTON: 'showValidationButtons',
+  HIDE_TITLE: 'hideTitle',
+  HIDE_CLOSE_BUTTON: 'hideCloseButton'
+} as const
+
+export type TPdfPreviewSessionKeys = (typeof PDF_PREVIEW_SESSION_KEYS)[keyof typeof PDF_PREVIEW_SESSION_KEYS]
+
+export type TPdfPreviewSessionParams = {
+  [PDF_PREVIEW_SESSION_KEYS.DXS_DOSSIER_ID]: string
+  [PDF_PREVIEW_SESSION_KEYS.GROUP_KEY]: string
+  [PDF_PREVIEW_SESSION_KEYS.CALLER_CODE]: string
+  [PDF_PREVIEW_SESSION_KEYS.CHANNEL]?: string | number
+  [PDF_PREVIEW_SESSION_KEYS.NDG]: string
+  [PDF_PREVIEW_SESSION_KEYS.BANK_CODE]: string
+  [PDF_PREVIEW_SESSION_KEYS.CORRELATION_KEY]: string
+  [PDF_PREVIEW_SESSION_KEYS.DOCUMENT_KEY]?: string
+  [PDF_PREVIEW_SESSION_KEYS.SHOW_X_BUTTON]?: boolean
+  [PDF_PREVIEW_SESSION_KEYS.SHOW_PRINT_BUTTON]?: boolean
+  [PDF_PREVIEW_SESSION_KEYS.SHOW_DOWNLOAD_BUTTON]?: boolean
+  [PDF_PREVIEW_SESSION_KEYS.SHOW_BACK_BUTTON]?: boolean
+  [PDF_PREVIEW_SESSION_KEYS.SHOW_VALIDATION_BUTTON]?: boolean
+  [PDF_PREVIEW_SESSION_KEYS.HIDE_TITLE]?: boolean
+  [PDF_PREVIEW_SESSION_KEYS.HIDE_CLOSE_BUTTON]?: boolean
+}

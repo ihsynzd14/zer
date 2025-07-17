@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "node_modules",
+    "assets",
+    "build",
+    "dist",
+    "coverage",
+    "devops",
+    "helm",
+    "i18n",
+    "public",
+    "tests",
+    "src/appInjector.js"
+  ],
+  "compilerOptions": {
+    "lib": [
+      "ES2020",
+      "DOM",
+      "DOM.Iterable",
+      "ESNext"
+    ],
+    "module": "esnext",
+    "target": "esnext",
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "declaration": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "importHelpers": true,
+    "isolatedModules": false,
+    "jsx": "react",
+    "moduleResolution": "node",
+    "noEmit": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "sourceMap": true,
+    "baseUrl": "./",
+    "paths": {
+      "src/*": ["src/*"],
+      "data/*": ["src/data/*"],
+      "stores/*": ["src/data/stores/*"],
+      "routes/*": ["src/data/routes/*"],
+      "pages/*": ["src/pages/*"],
+      "features/*": ["src/features/*"],
+      "utils/*": ["src/utils/*"]
+    }
+  }
+}

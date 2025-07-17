@@ -1,0 +1,17 @@
+deployList:
+  repeatableSets:
+  - deploySet:
+      conciergeCheck:
+        environment: qa
+        artifact:
+          name: dxs/pdf-preview-fe-global
+          version: 1.0.43
+        tenant: RO
+      install:
+        tool:
+          helm:
+            path: helm/pdf-preview-fe-global
+            values: helm/pdf-preview-fe-global/values-qat-ro.yaml
+            releaseName: pdf-preview-fe-global-qat
+            uninstallOnFailure: true
+      label: qat

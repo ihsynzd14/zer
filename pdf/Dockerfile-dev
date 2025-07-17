@@ -1,0 +1,6 @@
+FROM bitnami/nginx:1.19.2
+
+COPY default.conf /opt/bitnami/nginx/conf/bitnami/ucs.conf
+COPY dist /app
+
+CMD ["nginx", "-g", "daemon off;"]

@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#000000" />
+  <script src="https://unpkg.com/regenerator-runtime@0.14.0/runtime.js"></script>
+  <script>
+
+    const LOCALHOST_COUNTRY = "C0";
+    const LOCALHOST_ENV = "sit";
+
+    const basePaths = {
+      C0: {
+        sit: "https://api.it.ial.sit.g4c.unicredit.eu",
+        e01: "https://api.it.ial.e01.uat.g4c.unicredit.eu",
+        uat: "https://api.it.ial.uat.g4c.unicredit.eu",
+        prd: "https://ial.unicredit.it"
+      },
+      HU: {
+        dev: "https://ial-cee.sit.unicredit.eu", //TODO: all below for countries urls are not confirmed!
+        qat: "https://ial-cee.uat.unicredit.eu",
+        prd: "https://ial-cee.prd.unicredit.eu"
+      },
+      RO: {
+        dev: "https://ial-cee.sit.unicredit.eu",
+        qat: "https://ial-cee.uat.unicredit.eu",
+        prd: "https://ial-cee.prd.unicredit.eu"
+      },
+      CZS: {
+        dev: "https://ial-cee.sit.unicredit.eu",
+        qat: "https://ial-cee.uat.unicredit.eu",
+        prd: "https://ial-cee.prd.unicredit.eu"
+      },
+      SK: {
+        dev: "https://ial-cee.sit.unicredit.eu",
+        qat: "https://ial-cee.uat.unicredit.eu",
+        prd: "https://ial-cee.prd.unicredit.eu"
+      },
+      HR: {
+        dev: "https://ial-cee.sit.unicredit.eu",
+        qat: "https://ial-cee.uat.unicredit.eu",
+        prd: "https://ial-cee.prd.unicredit.eu"
+      },
+      BG: {
+        dev: "https://ial-cee.sit.unicredit.eu",
+        qat: "https://ial-cee.uat.unicredit.eu",
+        prd: "https://ial-cee.prd.unicredit.eu"
+      }
+    };
+
+    const envNames = {
+      C0: {
+        sit: "sit",
+        e01: "e01",
+        uat: "uat",
+        prd: "prd",
+        prodotti: "prd"
+      },
+      HU: {
+        dev: "dev",
+        qat: "qat",
+        prd: "prd"
+      },
+      RO: {
+        dev: "dev",
+        qat: "qat",
+        prd: "prd"
+      },
+      CZS: {
+        dev: "dev",
+        qat: "qat",
+        prd: "prd"
+      },
+      SK: {
+        dev: "dev",
+        qat: "qat",
+        prd: "prd"
+      },
+      HR: {
+        dev: "dev",
+        qat: "qat",
+        prd: "prd"
+      },
+      BG: {
+        dev: "dev",
+        qat: "qat",
+        prd: "prd"
+      }
+
+    };
+
+    const countryConfigs = {
+      it: "C0",
+      hu: "HU",
+      ro: "RO",
+      czs: "CZS",
+      sk: "SK",
+      hr: "HR",
+      bg: "BG"
+    };
+
+    function getCountry() {
+      for (let cntry in countryConfigs) {
+        if (window.origin.includes(cntry)) {
+          return countryConfigs[cntry];
+        }
+      }
+    }
+
+    function getEnvName(country) {
+      for (let env in envNames[country]) {
+        if (window.origin.includes(env)) {
+          return envNames[country][env];
+        }
+      }
+    }
+
+    function getBasePath(country, envName) {
+      return basePaths[country][envName];
+    }
+
+    function createEnvironmentConfig() {
+      let country = getCountry();
+      let envName = getEnvName(country);
+
+      if (window.location.origin.includes("localhost")) {
+        country = LOCALHOST_COUNTRY;
+        envName = LOCALHOST_ENV;
+      }
+
+      if (!country || !envName) {
+        const errorMsg = `Error! Country or environment not found: ${country}, ${envName}`
+        alert(errorMsg);
+        throw new Error(errorMsg);
+      }
+
+      return {
+        env: envName,
+        country: country,
+        basePath: getBasePath(country, envName),
+        expirationTolleration: 3600,
+        skipClearOnInit: window.self !== window.top
+      };
+    }
+
+    window.omnichannel_env = createEnvironmentConfig();
+  </script>
+  <title>DXS - pdf-preview-fe-global</title>
+</head>
+<body>
+<noscript> You need to enable JavaScript to run this app.</noscript>
+<div id="root"></div>
+</body>
+</html>

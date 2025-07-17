@@ -1,0 +1,80 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dep-{{ .Values.app.name }}
+  labels:
+    {{- if not .Values.app.cee_countries_config }}
+    app: {{.Values.app.name}}
+    version: {{.Values.app.version}}
+    {{- end }}
+    {{- include "pdf-preview-fe-global.labels" . | nindent 4 }}
+    #### Here the annotation for helm upgrade with no downtime
+  annotations:
+    {{- include "pdf-preview-fe-global.annotations" . | nindent 4 }}
+  #### end of annotations
+spec:
+  {{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.replicaCount }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- if not .Values.app.cee_countries_config }}
+      app: {{ .Values.app.name }}
+      version: {{ .Values.app.version }}
+      tier: {{ .Values.app.tier }}
+      {{- end }}
+      {{- include "pdf-preview-fe-global.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      namespace: {{ .Values.app.namespace }}
+      labels:
+        app: {{.Values.app.name}}
+        environment: {{ .Values.app.environment }}
+        version: {{.Values.app.version}}
+        tier: {{ .Values.app.tier }}
+        {{- if .Values.app.cee_countries_config }}
+        application_code: {{ .Values.app.application_code }}
+        project_id: {{ .Values.app.project_id }}
+        {{- end }}
+        {{- include "pdf-preview-fe-global.selectorLabels" . | nindent 8 }}
+      annotations:
+        {{if .Values.image.forceRestart }}helm.sh/revision: "{{ .Release.Revision }}"{{end}}
+    spec:
+      serviceAccountName: {{ .Values.app.serviceAccountName }}
+    {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
+      containers:
+        - name: {{ .Chart.Name }}
+          env:
+            - name: TZ
+              value: "Europe/Rome"
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          {{- if .Values.livenessProbe }}
+          livenessProbe:
+            {{- toYaml .Values.livenessProbe | nindent 12 }}
+          {{- end }}
+          {{- if .Values.readinessProbe }}
+          readinessProbe:
+            {{- toYaml .Values.readinessProbe | nindent 12 }}
+          {{- end }}
+          ports:
+          - containerPort: {{ .Values.service.port }}
+            protocol: TCP
+            name: http
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+    {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
+    {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}

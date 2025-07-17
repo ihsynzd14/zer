@@ -1,0 +1,12 @@
+{{- if gt .Values.autoscaling.minReplicas 1.0 }}
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: pdb-pdf-preview-fe-global
+  namespace: ns-dxs-fe-digitalsignature
+spec:
+  minAvailable: 50%
+  selector:
+    matchLabels:
+      app: pdf-preview-fe-global
+{{- end }}

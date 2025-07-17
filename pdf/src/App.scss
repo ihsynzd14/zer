@@ -1,0 +1,171 @@
+@use 'antd/dist/reset.css';
+@use '@g4p/react-styleguide-library/dist/style.css';
+@use "@g4p/react-styleguide-library/public/fonts/Unicredit/unicredit-font" as unicredit-font;
+@use '@g4p/react-styleguide-library/public/fonts/Asterisk/asterisk' as asterisk-font;
+@use "@dxs/coreenablers-fe-common-library/dist/index";
+@use 'variables' as vars;
+
+@include unicredit-font.UniCreditFont();
+@include asterisk-font.AsteriskFont();
+
+// TODO: copied here to fix problem after styleguide upgrade, need to do something better, otherwise dark mode will not work
+:root {
+  --color-primary: var(--multi-tenant-color-accent);
+  --color-primary2: #006375;
+  --color-secondary: #666666;
+  --color-disabled: #cccccc;
+  --color-disabled2: #c8eaf3;
+  --color-danger: #ea5c4d;
+  --color-warning: #f26b08;
+  --color-info: #2fa358;
+  --color-white: #ffffff;
+  --color-black: #262626;
+  --color-white-two: #f5f5f5;
+  --color-borders: #afafaf;
+  --color-background: #e5e5e5;
+  --color-placeholder: #909090;
+  --color-placeholder-unicredit: #666666;
+  --color-tooltip: #bfebf3;
+  --rgb-primary-color: 0, 122, 145;
+  --alpha: 0.8;
+}
+
+.padding-5 {
+  padding: 0 5vw;
+}
+
+.coreenablers-root {
+  z-index: 9;
+  width: 100%;
+}
+
+.omnichannel-message-wrapper p {
+  white-space: pre-line !important;
+  overflow-wrap: anywhere !important;
+}
+
+.coreenablers-container {
+  padding: 0;
+  margin: 1.5vw 0 0.5vw 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.coreenablers-details-box {
+  padding: 1vw 0;
+  max-width: vars.$max-width-row-inner-important;
+  width: 100%;
+}
+
+.coreenablers-row.dossier-details-page > div {
+  margin: auto;
+  width: 100%;
+}
+
+.coreenablers-details-breadcrumbs {
+  padding: 0 0 1vw 0;
+  max-width: vars.$max-width-row-inner-important;
+}
+
+.coreenablers-details-box-with-background {
+  padding: 0;
+  background-color: var(--color-white-two);
+}
+
+.coreenablers-flex-end-position {
+  display: flex !important;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.coreenablers-flex-center-position {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-form-clear-button {
+  height: 50px;
+  padding: 0 20px;
+  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.coreenablers-form-filters-bar {
+  display: flex;
+  padding-top: 15px;
+}
+
+.coreenablers-pagination-container {
+  border: none 1px;
+  width: 100%;
+  text-align: right;
+}
+
+.coreenablers-table-icon-style {
+  margin-right: 6px;
+  margin-bottom: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%
+}
+
+.coreenablers-table-column-content {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start
+}
+
+.coreenablers-status-text-bold-uppercase {
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase
+}
+
+.ant-btn.search-form-filter-bar-clear {
+  border: none;
+  color: var(--color-primary) !important;
+  min-height: 30px;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.ant-btn {
+  &.action-button {
+    border: none;
+    background-color: transparent !important;
+    min-height: 30px;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 700;
+    padding-left: 5px !important;
+    box-shadow: none !important;
+    color: var(--color-black) !important;
+
+    svg {
+      width: 26px !important;
+    }
+  }
+}
+
+.vertical-line-container {
+  display: flex !important;
+  align-items: center !important;
+}
+
+.vertical-line {
+  border-left: 1px solid #CCCCCC;
+  height: 30px;
+}
+
+@media (max-width: 768px) { 
+  .full-width-on-small {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: 1 1 100% !important;
+  }
+}

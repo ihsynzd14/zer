@@ -1,0 +1,11 @@
+/node_modules
+/dist
+/assets
+/coverage
+/devops
+/helm
+/public
+webpack.config.js
+tsconfig.json
+setupTest.ts
+appInjector.js
